@@ -82,7 +82,7 @@ class UserFeedView(generics.ListAPIView):
             userData = UserSerializer(user)
             following_users = user.following.all()
             queryset = MyPost.objects.all().filter(author__in=following_users)
-            s = PostSerializer(queryset,many = True)
+            s = PostSerializerForGet(queryset,many = True)
             data = {
                 "status" : 1,
                 "message":"success",
